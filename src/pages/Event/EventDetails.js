@@ -33,7 +33,7 @@ const EventDetails = () => {
   /* Fetch all the contact list from backend
    */
   const fetchContact = async () => {
-    const res = await axios.get('https://developer-crm-backend.herokuapp.com/contact', {withCredentials: true})
+    const res = await axios.get('http://localhost:5000/contact', {withCredentials: true})
     const data = await res.data
     const returnedData = []
 
@@ -47,7 +47,7 @@ const EventDetails = () => {
    * @param id ID of the specific one event
    */
   const fetchOneEvent = async (id) => {
-    const res = await axios.get(`https://developer-crm-backend.herokuapp.com/event/${id}`, {withCredentials: true});
+    const res = await axios.get(`http://localhost:5000/event/${id}`, {withCredentials: true});
     const data = res.data;
     return data
   }
@@ -59,7 +59,7 @@ const EventDetails = () => {
   const editEvent = async (event) => {
     // console.log(id)
     const res = await axios.post(
-    `https://developer-crm-backend.herokuapp.com/event/edit/${id}`, 
+    `http://localhost:5000/event/edit/${id}`, 
     event, 
     {withCredentials: true})
     
@@ -79,7 +79,7 @@ const EventDetails = () => {
       setEvent('')
       setRefresh(!refresh)
       setEdit(!edit)
-      // await axios.post(`https://developer-crm-backend.herokuapp.com/notify/edit`,
+      // await axios.post(`http://localhost:5000/notify/edit`,
       // {oldEvent:event, newEvent:data},
       // {withCredentials: true})
 
@@ -102,7 +102,7 @@ const EventDetails = () => {
    */
   const deleteEvent = async (id, name) => {
     //get the data of the event
-    const response = await axios.get(`https://developer-crm-backend.herokuapp.com/event/${id}`,{withCredentials: true})
+    const response = await axios.get(`http://localhost:5000/event/${id}`,{withCredentials: true})
 
     Swal.fire({
       title: `Do You Want to delete ${name} ?`,
@@ -118,12 +118,12 @@ const EventDetails = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         //send notification of the deleted event
-        await axios.post(`https://developer-crm-backend.herokuapp.com/notify/delete`,
+        await axios.post(`http://localhost:5000/notify/delete`,
           response.data,
           {withCredentials: true}
         )
 
-        const res = await axios.delete(`https://developer-crm-backend.herokuapp.com/event/${id}`, {
+        const res = await axios.delete(`http://localhost:5000/event/${id}`, {
           withCredentials: true
         })
 

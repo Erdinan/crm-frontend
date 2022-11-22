@@ -11,7 +11,7 @@ export default function Organisation() {
 
   useEffect(() => {
       /*get the organisation list from the database*/
-      axios.get("https://developer-crm-backend.herokuapp.com/organisation", {withCredentials: true})
+      axios.get("http://localhost:5000/organisation", {withCredentials: true})
       .then((data) => data.data)
       .then((data) => {
         //set the organisation size for all the organisation
@@ -29,7 +29,7 @@ export default function Organisation() {
   }, [contact]);
 
   useEffect(() => {
-    const BASE_URL = "https://developer-crm-backend.herokuapp.com";
+    const BASE_URL = "http://localhost:5000";
     axios.get(BASE_URL + "/contact", {withCredentials:true}).then(res => {
       const list = res.data;
       setContact(list);

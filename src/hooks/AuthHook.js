@@ -22,7 +22,7 @@ function useAuth({history}) {
             password: password
           },
           withCredentials: true,
-          url: "https://developer-crm-backend.herokuapp.com/login"
+          url: "http://localhost:5000/login"
         }).then((response) => {
           console.log(response)
           if (response.data){
@@ -56,7 +56,7 @@ function useAuth({history}) {
                 password: password
               },
               withCredentials: true,
-              url: "https://developer-crm-backend.herokuapp.com/register"
+              url: "http://localhost:5000/register"
             }).then((response) => {
               if (response.data){
                 console.log('successful login');
@@ -76,7 +76,7 @@ function useAuth({history}) {
     ,
     logout() {
       return new Promise(() => {
-        axios.post('https://developer-crm-backend.herokuapp.com/logout', {}, {withCredentials: true});  
+        axios.post('http://localhost:5000/logout', {}, {withCredentials: true});  
         setAuthed(false);
         history.push('/login');
       });

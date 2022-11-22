@@ -1,11 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react';
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-// import our components
-// import Nav from "./components/Nav";
 import SideBar from "./components/sidebar";
 import Organisation from './pages/Organisation';
 import OrganisationDetail from './pages/OrganisationDetail';
@@ -23,7 +17,6 @@ import Profile from './pages/ProfilePage';
 
 function App() {
   
-  const [loggedIn, setLoggedIn] = useState(false);
   const mainComponent = (
     <div className="App">
       <Router>
@@ -52,8 +45,6 @@ function App() {
       </Router>
     </div>
   )
-
-  const loginPage = <LoginForm setLoggedIn={setLoggedIn}/>
 
   return mainComponent;
 }

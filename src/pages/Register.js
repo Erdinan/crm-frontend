@@ -12,11 +12,6 @@ import {
   } from "@material-ui/core";
 import Swal from 'sweetalert2'
 
-// import { loginUser } from "../api";
-import { withRouter } from "react-router-dom";
-//import { response } from "../../../CRM_Backend/app";
-
-
 /*
   Generate a login form
 */
@@ -53,7 +48,7 @@ export function RegisterForm({history}) {
         password: password
       },
       withCredentials: true,
-      url: "https://developer-crm-backend.herokuapp.com/register"
+      url: "http://localhost:5000/register"
     }).then((response) => {
       if (response.data){
         sessionStorage.setItem("isAuthenticated", "true")
@@ -97,7 +92,7 @@ export function RegisterForm({history}) {
       <Toolbar>
         <Grid container justify="center" wrap="wrap">
           <Grid item>
-            <Typography variant="h6">DEVELOPERS CRM</Typography>
+            <Typography variant="h6">PERSONAL CRM</Typography>
           </Grid>
         </Grid>
       </Toolbar>
@@ -186,7 +181,7 @@ export function RegisterForm({history}) {
         </Grid>
         <Grid item>
           <Link href="/login" variant="h6">
-          Have an account? Login here.
+          Already have an account? Login here.
           </Link>
         </Grid>
         </Paper>

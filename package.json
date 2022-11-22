@@ -6,7 +6,7 @@
     "node": "14.x",
     "npm": "6.x"
   },
-  "proxy": "https://developer-crm-backend.herokuapp.com/",
+  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
@@ -20,7 +20,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.4",
     "date-fns": "^2.24.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.3",
     "moment-timezone": "^0.5.33",
     "react": "^17.0.2",
     "react-big-calendar": "^0.35.0",

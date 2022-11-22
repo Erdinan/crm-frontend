@@ -12,7 +12,7 @@ export default function OrganisationDetail(props) {
 
   useEffect(() => {
     /*get the organisation list from the database*/
-    const BASE_URL ="https://developer-crm-backend.herokuapp.com/organisation/" + props.match.params.id;
+    const BASE_URL ="http://localhost:5000/organisation/" + props.match.params.id;
     axios.get(BASE_URL, {withCredentials: true})
       .then((data) => data.data)
       .then((data) => {
@@ -24,7 +24,7 @@ export default function OrganisationDetail(props) {
   /* Get list of departments from the Backend
    */
   const getDepartments = async () => {
-    const BASE_URL = "https://developer-crm-backend.herokuapp.com";
+    const BASE_URL = "http://localhost:5000";
     const res = await axios.get(BASE_URL + "/department", {withCredentials: true})
     setDepartmentList(res.data);
     let depList = res.data
@@ -35,7 +35,7 @@ export default function OrganisationDetail(props) {
    */
   const getContacts = async (org) => {
     const deps = await getDepartments();
-    const BASE_URL = "https://developer-crm-backend.herokuapp.com";
+    const BASE_URL = "http://localhost:5000";
     await axios.get(BASE_URL + "/contact", {withCredentials: true}).then(res => {
         const list = res.data;
         const sortedList = list.sort((a, b) => (a.contactName > b.contactName) ? 1 : -1)

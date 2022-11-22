@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import axios from 'axios';
-// import { loginUser } from "../api";
-import { withRouter } from "react-router-dom";
-//import { response } from "../../../CRM_Backend/app";
 import {
 Button,
 TextField,
@@ -12,47 +9,31 @@ AppBar,
 Typography,
 Toolbar,
 Link,
+CircularProgress
 } from "@material-ui/core";
 import Swal from 'sweetalert2'
 
 // component to Logout user
 export function Logout() {
-  
-  // remove token from the local storage
   sessionStorage.removeItem('token');
-  // open the homepage --- example of how to redirect
-  // another example
-  
-  
 }
 
-/*
-  Generate a login form
-*/
+// Generate a login form
 export function LoginForm({history}) {
   // state hook functions   
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("erdinanangkajaya@gmail.com");
+  const [password, setPassword] = useState("password");
+  const [loading, setLoading] = useState(false);
+  const timer = React.useRef();
 
   if (sessionStorage.getItem("isAuthenticated") === "true"){
     history.push('./')
   }
-
-  // const token = localStorage.getItem("token");
-  // if (token !== null) {
-  //     return (
-  //         <div>You are logged in</div>
-  //     )
-  
   
   // submit form
-  function onSubmit(e) {
-    e.preventDefault();
+  function onSubmit() {
+    setLoading(true);
     // using API function to submit data to Personal CRM API
-    // loginUser({
-    //     email: email,
-    //     password: password
-    // });
     axios({
       method: "POST",
       data: {
@@ -60,9 +41,9 @@ export function LoginForm({history}) {
         password: password
       },
       withCredentials: true,
-      url: "https://developer-crm-backend.herokuapp.com/login"
+      url: "http://localhost:5000/login"
     }).then((response) => {
-      // console.log(response)
+      console.log(response)
       if (response.data){
         sessionStorage.setItem("isAuthenticated", "true")
         Swal.fire({
@@ -74,8 +55,7 @@ export function LoginForm({history}) {
           timer: 1000,
           showConfirmButton: false
         }).then(()=>{history.push('/')})
-        
-      } 
+      }
       else {
         Swal.fire({
           title: "Wrong Email or Password",
@@ -86,30 +66,31 @@ export function LoginForm({history}) {
           }
         })
       }
+      setLoading(false);
     }).catch(error => {
       console.log('server error');
       console.log(error);
+      setLoading(false);
     })
-
-    
   }
+
   return (
     <div>
       <AppBar position="static" alignitems="center" color="primary">
         <Toolbar>
-          <Grid container justify="center" wrap="wrap">
+          <Grid container justifyContent="center" wrap="wrap">
             <Grid item>
-              <Typography variant="h6">DEVELOPERS CRM</Typography>
+              <Typography variant="h6">PERSONAL CRM</Typography>
             </Grid>
           </Grid>
         </Toolbar>
       </AppBar>
-      <Grid container spacing={5} justify="center" direction="row">
+      <Grid container spacing={5} justifyContent="center" direction="row">
         <Grid item>
           <Grid
             container
             direction="column"
-            justify="center"
+            justifyContent="center"
             spacing={2}
             className="login-form"
           >
@@ -129,6 +110,7 @@ export function LoginForm({history}) {
               <Grid container direction="column" spacing={4}>
                 <Grid item>
                   <TextField
+                    value={email}
                     type="text"
                     placeholder="Email"
                     fullWidth
@@ -144,6 +126,7 @@ export function LoginForm({history}) {
                 </Grid>
                 <Grid item>
                   <TextField
+                    value={password}
                     type="password"
                     id = "password"
                     placeholder="Password"
@@ -157,19 +140,24 @@ export function LoginForm({history}) {
                   />
                 </Grid>
                 <Grid item>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    className="button-block"
-                    onClick={onSubmit}
-                    style={{textTransform: "none"}}
-                  >
-                    Submit
-                  </Button>
+                  {!loading ? (
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        type="submit"
+                        className="button-block"
+                        onClick={onSubmit}
+                        disabled={(email == "" || password == "")}
+                        style={{textTransform: "none"}}
+                      >
+                        Submit
+                      </Button>
+                     ) : (
+                      <CircularProgress />
+                     )
+                  }
                   <br />
                   <br />
-                  
                 </Grid>
               </Grid>
             </form>

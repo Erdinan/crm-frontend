@@ -112,7 +112,7 @@ const Events = () => {
   /* Fetch all contact list from the backend
    */
   const fetchContacts = async () => {
-    const res = await axios.get('https://developer-crm-backend.herokuapp.com/contact', {withCredentials: true})
+    const res = await axios.get('http://localhost:5000/contact', {withCredentials: true})
     const data = await res.data;
 
     return data
@@ -121,7 +121,7 @@ const Events = () => {
   /* Fetch all event list from the backend
    */
   const fetchEvents = async () => {
-    const res = await axios.get('https://developer-crm-backend.herokuapp.com/event', {withCredentials: true})
+    const res = await axios.get('http://localhost:5000/event', {withCredentials: true})
     const data = await res.data;
 
     return data
@@ -133,7 +133,7 @@ const Events = () => {
    */
   const addEvent = async (event) => {
     const res = await axios.post(
-      `https://developer-crm-backend.herokuapp.com/event`, 
+      `http://localhost:5000/event`, 
       event, 
       {withCredentials: true});
 
@@ -176,7 +176,7 @@ const Events = () => {
    */
   const deleteEvent = async (id, name) => {
     //get the data of the event
-    const response = await axios.get(`https://developer-crm-backend.herokuapp.com/event/${id}`,{withCredentials: true})
+    const response = await axios.get(`http://localhost:5000/event/${id}`,{withCredentials: true})
 
     Swal.fire({
       title: `Do You Want to delete ${name} ?`,
@@ -192,12 +192,12 @@ const Events = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         //send notification of the deleted event
-        await axios.post(`https://developer-crm-backend.herokuapp.com/notify/delete`,
+        await axios.post(`http://localhost:5000/notify/delete`,
           response.data,
           {withCredentials: true}
         )
         
-        const res = await axios.delete(`https://developer-crm-backend.herokuapp.com/event/${id}`, {
+        const res = await axios.delete(`http://localhost:5000/event/${id}`, {
           withCredentials: true
         })
 

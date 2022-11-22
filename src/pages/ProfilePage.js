@@ -39,7 +39,7 @@ export default function ContactProfile(props) {
   useEffect(() => {
     // Get contact based on the id
     const getContact = async () => {
-      const BASE_URL = "https://developer-crm-backend.herokuapp.com";
+      const BASE_URL = "http://localhost:5000";
       await axios.get(BASE_URL + "/profile", {withCredentials: true}).then(res => {
         const data = res.data;
         // console.log(data)
@@ -79,7 +79,7 @@ export default function ContactProfile(props) {
    */
   const onSubmit = (e) => {
     e.preventDefault();
-    const BASE_URL = "https://developer-crm-backend.herokuapp.com";
+    const BASE_URL = "http://localhost:5000";
     const url = BASE_URL + "/profile/updatepassword";
     axios.post(url, {...values},{withCredentials: true})
     .then((response) => {

@@ -41,7 +41,7 @@ const AddEvent = ({event, onEdit, readOnly}) => {
   /* Fetch list of contacts from backend
    */
   const fetchContacts = async () => {
-    const res = await axios.get('https://developer-crm-backend.herokuapp.com/contact', {withCredentials: true})
+    const res = await axios.get('http://localhost:5000/contact', {withCredentials: true})
     const data = await res.data;
     const returnedData = [];
 
