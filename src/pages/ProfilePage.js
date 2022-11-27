@@ -3,9 +3,6 @@ import React, { useState, useEffect } from "react";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import Autocomplete from '@mui/material/Autocomplete';
 import Swal from 'sweetalert2'
 import CircularProgress from '@mui/material/CircularProgress';
 

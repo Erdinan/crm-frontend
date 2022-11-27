@@ -20,11 +20,10 @@ export function Logout() {
 
 // Generate a login form
 export function LoginForm({history}) {
-  // state hook functions   
+  // state hook functions
   const [email, setEmail] = useState("erdinanangkajaya@gmail.com");
   const [password, setPassword] = useState("password");
   const [loading, setLoading] = useState(false);
-  const timer = React.useRef();
 
   if (sessionStorage.getItem("isAuthenticated") === "true"){
     history.push('./')

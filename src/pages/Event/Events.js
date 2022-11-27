@@ -1,7 +1,5 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-// import AddEvent from '../../components/Event/AddEvent'
-// import EventHeader from '../../components/Event/EventHeader'
 import moment from 'moment-timezone'
 import DataGridComp from '../../components/Event/DataGridComp'
 import Swal from 'sweetalert2'
@@ -9,8 +7,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import { Link } from 'react-router-dom';
-// import Button from '../../components/Event/Button'
 import Button from "@material-ui/core/Button";
 import EventDialog from '../../components/Event/EventDialog'
 import axios from 'axios'

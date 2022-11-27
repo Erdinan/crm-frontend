@@ -62,10 +62,6 @@ const EventDetails = () => {
     `http://localhost:5000/event/edit/${id}`, 
     event, 
     {withCredentials: true})
-    
-    // console.log("test")
-    const data = res.data;
-    // console.log(res.status)
 
     if(res.status !== 400){
       Swal.fire({

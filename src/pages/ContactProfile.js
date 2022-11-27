@@ -220,14 +220,9 @@ export default function ContactProfile(props) {
     window.location = '/contact/profile/' + id;
   }
 
-  // Styles
-  const loadingStyle = { fontSize: "36px" };
-  // const deleteDivStyle = { textAlign: "right", marginRight: "2%" };
-  // const cancelDivStyle = { textAlign: "left", marginLeft: "2%" };
   const buttonStyle = { textTransform: "none", width: "108px" };
   const marginStyle = { marginTop: "2%", marginLeft: "80px" };
   const profileStyle = { width: "500px", margin: "auto" };
-  const labelStyle = { textAlign: "left", marginLeft: "12%" };
   const textFieldStyle = { minWidth: "400px" };
   const autoCompleteStyle = { width: "400px", marginLeft: "10%" }
   return (
